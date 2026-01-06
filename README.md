@@ -8,6 +8,57 @@ Go client library for the [endoflife.date](https://endoflife.date/) API v1.
 go get github.com/shmokmt/endoflife-go
 ```
 
+## CLI
+
+### Installation
+
+```bash
+go install github.com/shmokmt/endoflife-go/cmd/endoflife@latest
+```
+
+### Commands
+
+- `endoflife products` - List all products
+- `endoflife product <name>` - Get product details
+  - `--release <version>` - Get specific release info
+  - `--latest` - Get latest release info
+- `endoflife version` - Show version
+
+### Options
+
+- `--json` - Output in JSON format
+- `--timeout <duration>` - HTTP timeout (default: 30s)
+
+### Examples
+
+Check the latest release for Apache Airflow in JSON format:
+
+```bash
+endoflife product apache-airflow --latest --json
+```
+
+```json
+{
+  "schema_version": "1.2.0",
+  "generated_at": "2026-01-06T00:32:36+00:00",
+  "result": {
+    "name": "3",
+    "label": "3",
+    "releaseDate": "2024-09-24",
+    "isLts": false,
+    "isEoas": false,
+    "isEol": false,
+    "isDiscontinued": false,
+    "isMaintained": true,
+    "latest": {
+      "name": "3.1.5",
+      "date": "2026-02-07",
+      "link": "https://airflow.apache.org/docs/apache-airflow/stable/release_notes.html#airflow-3-0-1-2025-01-27"
+    }
+  }
+}
+```
+
 ## Usage
 
 ### Basic Usage
